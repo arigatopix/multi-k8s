@@ -1,6 +1,6 @@
-docker biuld -t arigatopix/multi-client:latest -t arigatopix/multi-client:$SHA -f ./client/Dockerfile ./client
-docker biuld -t arigatopix/multi-server:latest -t arigatopix/multi-server:$SHA -f ./server/Dockerfile ./server
-docker biuld -t arigatopix/multi-worker:latest -t arigatopix/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+docker build -t arigatopix/multi-client:latest -t arigatopix/multi-client:$SHA -f ./client/Dockerfile ./client
+docker build -t arigatopix/multi-server:latest -t arigatopix/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t arigatopix/multi-worker:latest -t arigatopix/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
 docker push arigatopix/multi-client:latest
 docker push arigatopix/multi-server:latest
