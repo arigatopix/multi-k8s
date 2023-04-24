@@ -3,16 +3,15 @@ kind: Ingress
 metadata:
   name: ingress-service
   annotations:
-    kubernetes.io/ingress.class: 'nginx'
     nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     cert-manager.io/cluster-issuer: 'letsencrypt-prod'
     nginx.ingress.kubernetest.io/ssl-redirect: 'true'
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
-        - arigatopix.com
-        - www.arigatopix.com
+        - devx.pea.co.th
       secretName: arigatopix-com
   rules:
     - http:
@@ -31,24 +30,7 @@ spec:
                 name: server-cluster-ip-service
                 port:
                   number: 5000
-    - host: arigatopix.com
-      http:
-        paths:
-          - path: /?(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: client-cluster-ip-service
-                port:
-                  number: 3000
-          - path: /api/?(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: server-cluster-ip-service
-                port:
-                  number: 5000
-    - host: www.arigatopix.com
+    - host: devx.pea.co.th
       http:
         paths:
           - path: /?(.*)
